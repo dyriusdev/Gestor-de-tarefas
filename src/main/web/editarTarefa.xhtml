@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+	<head>
+		<title>Edição de tarefa</title>
+		<link rel="stylesheet" type="text/css" href="global.css" />
+	</head>
+	<body>
+		<div class="container">
+			<h2>Editar Tarefa</h2>
+			<h:form>
+				<f:metadata>
+					<f:viewParam name="tarefaId" value="#{editarTarefaBean.tarefaId}"/>
+					<f:event listener="#{editarTarefaBean.carregarTarefaAtual}" type="preRenderView" />
+				</f:metadata>			
+				<h:messages globalOnly="true" infoClass="message-success" errorClass="message-error"/>
+				
+				<div class="form-group">
+					<h:outputLabel for="titulo" value="Titulo :" />
+					<h:inputText id="titulo" value="#{editarTarefaBean.tarefaAtual.titulo}" required="true" requiredMessage="Titulo é obrigatorio" size="50" />
+					<h:message for="titulo" style="color : red;" />
+				</div>
+				
+				<div class="form-group">
+					<h:outputLabel for="descricao" value="Descrição :" />
+					<h:inputTextarea id="descricao" value="#{editarTarefaBean.tarefaAtual.descricao}" rows="5" cols="50" required="true" requiredMessage="Descrição é obrigatorio" />
+					<h:message for="descricao" style="color : red;" />
+				</div>
+				
+				<div class="form-row">
+					<div class="form-group">
+						<h:outputLabel for="responsavel" value="Responsavel :"/>
+						<h:selectOneMenu id="responsavel" value="#{editarTarefaBean.tarefaAtual.responsavel}" required="true" requiredMessage="Responsavel é obrigatorio">
+							<f:selectItems value="#{cadastroTarefaBean.responsaveis}"/>
+						</h:selectOneMenu>
+						<h:message for="responsavel" style="color : red;" />
+					</div>
+					
+					<div class="form-group">
+						<h:outputLabel for="prioridade" value="Prioridade :"/>
+						<h:selectOneMenu id="prioridade" value="#{editarTarefaBean.tarefaAtual.prioridade}" required="true" requiredMessage="Prioridade é obrigatorio">
+							<f:selectItem itemValue="#{null}" itemLabel="Todos"/>
+	                        <f:selectItem itemValue="#{0}" itemLabel="Baixa"/>
+	                        <f:selectItem itemValue="#{1}" itemLabel="Media"/>
+	                        <f:selectItem itemValue="#{2}" itemLabel="Alta"/>
+						</h:selectOneMenu>
+						<h:message for="prioridade" style="color : red;" />
+					</div>
+				</div>
+				
+				<div class="button-container">
+					<h:commandButton value="Salvar alterações" action="#{editarTarefaBean.salvarTarefaEditada}"/>
+					<h:button value="Voltar" outcome="index"/>
+				</div>
+			</h:form>
+		</div>
+	</body>
+</html>
