@@ -13,7 +13,7 @@ import gtarefas.dao.FuncionarioDAO;
 import gtarefas.dao.TarefaDAO;
 import gtarefas.modelos.Funcionario;
 
-public class CadastroTarefaBean implements Serializable {
+public class CadastroBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String titulo, descricao, responsavel;

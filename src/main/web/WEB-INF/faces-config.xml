@@ -5,18 +5,18 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
 	<managed-bean>
-		<managed-bean-name>cadastroTarefaBean</managed-bean-name>
-		<managed-bean-class>gtarefas.beans.CadastroTarefaBean</managed-bean-class>
+		<managed-bean-name>cadastroBean</managed-bean-name>
+		<managed-bean-class>gtarefas.beans.CadastroBean</managed-bean-class>
 		<managed-bean-scope>view</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
-		<managed-bean-name>listagemTarefaBean</managed-bean-name>
-		<managed-bean-class>gtarefas.beans.ListagemTarefaBean</managed-bean-class>
+		<managed-bean-name>tarefaBean</managed-bean-name>
+		<managed-bean-class>gtarefas.beans.TarefaBean</managed-bean-class>
 		<managed-bean-scope>view</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
-		<managed-bean-name>editarTarefaBean</managed-bean-name>
-		<managed-bean-class>gtarefas.beans.EditarTarefaBean</managed-bean-class>
+		<managed-bean-name>editarBean</managed-bean-name>
+		<managed-bean-class>gtarefas.beans.EditarBean</managed-bean-class>
 		<managed-bean-scope>view</managed-bean-scope>
 	</managed-bean>
 

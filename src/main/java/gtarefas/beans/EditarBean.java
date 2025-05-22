@@ -13,7 +13,7 @@ import gtarefas.dao.TarefaDAO;
 import gtarefas.modelos.Funcionario;
 import gtarefas.modelos.Tarefa;
 
-public class EditarTarefaBean implements Serializable {
+public class EditarBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Integer tarefaId;

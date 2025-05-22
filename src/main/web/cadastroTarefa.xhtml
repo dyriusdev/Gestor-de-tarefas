@@ -15,28 +15,28 @@
 				
 				<div class="form-group">
 					<h:outputLabel for="titulo" value="Titulo :" />
-					<h:inputText id="titulo" value="#{cadastroTarefaBean.titulo}" required="true" requiredMessage="Titulo é obrigatorio" size="50" />
+					<h:inputText id="titulo" value="#{cadastroBean.titulo}" required="true" requiredMessage="Titulo é obrigatorio" size="50" />
 					<h:message for="titulo" style="color : red;" />
 				</div>
 				
 				<div class="form-group">
 					<h:outputLabel for="descricao" value="Descrição :" />
-					<h:inputTextarea id="descricao" value="#{cadastroTarefaBean.descricao}" rows="5" cols="50" required="true" requiredMessage="Descrição é obrigatorio" />
+					<h:inputTextarea id="descricao" value="#{cadastroBean.descricao}" rows="5" cols="50" required="true" requiredMessage="Descrição é obrigatorio" />
 					<h:message for="descricao" style="color : red;" />
 				</div>
 				
 				<div class="form-row">
 					<div class="form-group">
 						<h:outputLabel for="responsavel" value="Responsavel :"/>
-						<h:selectOneMenu id="responsavel" value="#{cadastroTarefaBean.responsavel}" required="true" requiredMessage="Responsavel é obrigatorio">
-							<f:selectItems value="#{cadastroTarefaBean.responsaveis}"/>
+						<h:selectOneMenu id="responsavel" value="#{cadastroBean.responsavel}" required="true" requiredMessage="Responsavel é obrigatorio">
+							<f:selectItems value="#{cadastroBean.responsaveis}"/>
 						</h:selectOneMenu>
 						<h:message for="responsavel" style="color : red;" />
 					</div>
 					
 					<div class="form-group">
 						<h:outputLabel for="prioridade" value="Prioridade :"/>
-						<h:selectOneMenu id="prioridade" value="#{cadastroTarefaBean.prioridade}" required="true" requiredMessage="Prioridade é obrigatorio">
+						<h:selectOneMenu id="prioridade" value="#{cadastroBean.prioridade}" required="true" requiredMessage="Prioridade é obrigatorio">
 							<f:selectItem itemValue="#{null}" itemLabel="Todos"/>
 	                        <f:selectItem itemValue="#{0}" itemLabel="Baixa"/>
 	                        <f:selectItem itemValue="#{1}" itemLabel="Media"/>
@@ -48,14 +48,14 @@
 				
 				<div class="form-group">
 					<h:outputLabel for="deadline" value="Deadline :" />
-					<h:inputText id="deadline" value="#{cadastroTarefaBean.deadline}" required="true" requiredMessage="Deadline é obrigatorio">
+					<h:inputText id="deadline" value="#{cadastroBean.deadline}" required="true" requiredMessage="Deadline é obrigatorio">
 						<f:convertDateTime pattern="dd/MM/yyyy"/>
 					</h:inputText>
 					<h:message for="deadline" style="color : red;" />
 				</div>
 				
 				<div class="button-container">
-					<h:commandButton value="Cadastrar" action="#{cadastroTarefaBean.registrarTarefa}"/>
+					<h:commandButton value="Cadastrar" action="#{cadastroBean.registrarTarefa}"/>
 					<h:button value="Voltar" outcome="index"/>
 				</div>
 			</h:form>

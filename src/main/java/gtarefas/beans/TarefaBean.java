@@ -15,7 +15,7 @@ import gtarefas.dao.TarefaDAO;
 import gtarefas.modelos.Funcionario;
 import gtarefas.modelos.Tarefa;
 
-public class ListagemTarefaBean implements Serializable {
+public class TarefaBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Integer idFiltro, prioridadeFiltro;
