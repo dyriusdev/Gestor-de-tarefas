@@ -10,6 +10,7 @@ e outro para criar/cadastrar uma tarefa
 # Itens requisitados para esse projeto
 - (a) JavaServerFaces
 - (b) Banco de dados PostgreSQL
+- (d) Testes unitários
 
 # Instalação e uso
 1. Preparação do tomcat
