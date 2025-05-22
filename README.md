@@ -7,7 +7,7 @@ possui apenas 3 paginas, a principal é onde tem uma lista e opções de filtros
 tem 2 botões que servem para poder editar ou deletar um produto, acima da lista tem 2 botões um deles serve para aplicar os filtros
 e outro para criar/cadastrar uma tarefa
 
-# Itens requisitados para esse trabalho
+# Itens requisitados para esse projeto
 - (a) JavaServerFaces
 - (b) Banco de dados PostgreSQL
 
