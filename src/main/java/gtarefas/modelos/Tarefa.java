@@ -1,5 +1,6 @@
 package gtarefas.modelos;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
@@ -7,14 +8,14 @@ import java.sql.Date;
  * 
  * Essa classe representa uma tarefa do banco de dados
  */
-public class Tarefa {
+public class Tarefa implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
-	private int id, responsavel, prioridade;
-	private String titulo, descricao;
+	private int id, prioridade;
+	private String titulo, descricao, responsavel;
 	private Date deadline;
 	
-	public Tarefa(int id, String titulo, String descricao, int responsavel, int prioridade, Date deadline) {
-		super();
+	public Tarefa(int id, String titulo, String descricao, String responsavel, int prioridade, Date deadline) {
 		this.id = id;
 		this.responsavel = responsavel;
 		this.prioridade = prioridade;
@@ -25,11 +26,11 @@ public class Tarefa {
 	
 	// Getters e Setters
 	
-	public int getResponsavel() {
+	public String getResponsavel() {
 		return responsavel;
 	}
-
-	public void setResponsavel(int responsavel) {
+	
+	public void setResponsavel(String responsavel) {
 		this.responsavel = responsavel;
 	}
 

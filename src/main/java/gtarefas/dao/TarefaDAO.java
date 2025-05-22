@@ -29,25 +29,26 @@ public class TarefaDAO {
 	 * @param responsavel pela tarefa
 	 * @param prioridade da tarefa
 	 * @param deadline da tarefa
+	 * 
+	 * @return retorna true caso a operação seja realizada com sucesso e false para caso haja erro
 	 */
-	public static void cadastrarTarefa(String titulo, String descricao, int responsavel, int prioridade, Date deadline) {
+	public static boolean cadastrarTarefa(String titulo, String descricao, String responsavel, int prioridade, Date deadline) {
 		try {
 			Connection connection = Database.getInstance().getConnection();
 			PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO tarefas (titulo, descricao, responsavel, prioridade, deadline) VALUES (?, ?, ?, ?, ?)");
 			preparedStatement.setString(1, titulo);
 			preparedStatement.setString(2, descricao);
-			preparedStatement.setInt(3, responsavel);
+			preparedStatement.setString(3, responsavel);
 			preparedStatement.setInt(4, prioridade);
 			preparedStatement.setDate(5, deadline);
 			
-			ResultSet result = preparedStatement.executeQuery();
-			if (result.next()) {
-				
-			}
+			preparedStatement.executeUpdate();
 			connection.close();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return false;
 	}
 	
 	/**
@@ -64,11 +65,12 @@ public class TarefaDAO {
 			Statement statement = connection.createStatement();
 			ResultSet result = statement.executeQuery("SELECT * FROM tarefas");
 			while (result.next()) {
+				
 				tarefas.add(new Tarefa(
 						result.getInt(1),
 						result.getString(2),
 						result.getString(3), 
-						result.getInt(4), 
+						result.getString(4), 
 						result.getInt(5), 
 						result.getDate(6)));
 			}
@@ -80,7 +82,23 @@ public class TarefaDAO {
 		return tarefas;
 	}
 	
-	// TODO: fazer retonar uma mensagem se o objeto foi excluido ou não foi encontrado
+	public static Tarefa getTarefa(int id) {
+		try {
+			Connection connection = Database.getInstance().getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM tarefas WHERE id = ?");
+			preparedStatement.setInt(1, id);
+			ResultSet result = preparedStatement.executeQuery();
+			connection.close();
+			if (result.next()) {
+				return new Tarefa(result.getInt(1), result.getString(2), result.getString(3), 
+						result.getString(4), result.getInt(5), result.getDate(6));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	/**
 	 * Esse metodo busca por um objeto que tem o mesmo id que o recebido no parametro 
 	 * dentro da tabela de tarefas e caso encontre ela será deletada
@@ -90,17 +108,16 @@ public class TarefaDAO {
 	public static void deletarTarefa(int id) {
 		try {
 			Connection connection = Database.getInstance().getConnection();
-			PreparedStatement preparedStatement = connection.prepareStatement("DELETE * FROM tarefas WHERE id = ?");
+			PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM tarefas WHERE id = ?");
 			preparedStatement.setInt(1, id);
 			
-			preparedStatement.executeQuery();
+			preparedStatement.execute();
 			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	// TODO: fazer retonar uma mensagem se o objeto foi excluido ou não foi encontrado
 	/**
 	 * Esse metodo serve para atualizar um objeto especifico do banco que possui o mesmo id
 	 * da tarefa que está para ser atualizada, após ser encontrada é feito uma sobreescrita nas informações
@@ -113,12 +130,13 @@ public class TarefaDAO {
 			PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tarefas SET titulo = ?, descricao = ?, responsavel = ?, prioridade = ?, deadline = ? WHERE id = ?");
 			preparedStatement.setString(1, tarefa.getTitulo());
 			preparedStatement.setString(2, tarefa.getDescricao());
-			preparedStatement.setInt(3, tarefa.getResponsavel());
+			preparedStatement.setString(3, tarefa.getResponsavel());
 			preparedStatement.setInt(4, tarefa.getPrioridade());
 			preparedStatement.setDate(5, tarefa.getDeadline());
+			
 			preparedStatement.setInt(6, tarefa.getId());
 			
-			preparedStatement.executeQuery();
+			preparedStatement.executeUpdate();
 			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();

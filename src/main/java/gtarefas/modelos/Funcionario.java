@@ -12,7 +12,6 @@ public class Funcionario {
 	private String nome;
 	
 	public Funcionario(int id, String nome) {
-		super();
 		this.id = id;
 		this.nome = nome;
 	}
